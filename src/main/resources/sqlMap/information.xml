@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lennie.cse.repository.InformationMapper">
+    <select id="selectAll" resultType="com.lennie.cse.model.Information">
+      select * from information_release
+    </select>
+    <select id="selectById" parameterType="Integer" resultType="com.lennie.cse.model.Information">
+      select * from information_release where id = #{v}
+    </select>
+    <select id="selectByName" parameterType="String" resultType="com.lennie.cse.model.Information">
+      select * from information_release where `name` like '%'#{v}'%'
+    </select>
+    <!--<select id="selectByName" parameterType="String" resultType="com.lennie.cse.model.Information">
+      select * from information_release where `name` like '%${value}%'
+    </select>-->
+
+    <insert id="insertInfo" parameterType="com.lennie.cse.model.Information">
+      insert into information_release (title, receiver, content, creater, datetime)
+      values (#{title}, #{receiver}, #{content}, #{creater}, #{datetime})
+    </insert>
+    <update id="updateInfo" parameterType="com.lennie.cse.model.Information">
+      update information_release
+      set title = #{title},receiver = #{receiver}, content=#{content},creater=#{creater},datetime=#{datetime}
+      where id=#{id}
+    </update>
+    <delete id="deleteInfo" parameterType="Integer">
+      delete from information_release
+      where id=#{val}
+    </delete>
+</mapper>

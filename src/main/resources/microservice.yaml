@@ -1,0 +1,29 @@
+APPLICATION_ID: pojo
+service_description:
+  name: CSEJavaChassisDemo
+  version: 0.0.1
+  environment: development
+  properties:
+    allowCrossApp: false
+cse:
+  service:
+    registry:
+      address: http://localhost:30100
+      instance:
+        watch: false
+#  config:
+#    client:
+#      serverUri: https://cse.cn-north-1.myhuaweicloud.com:443
+#      refreshMode: 1
+#      refresh_interval: 5000
+  #monitor:
+    #client:
+      #serverUri: https://cse.cn-north-1.myhuaweicloud.com:443
+  rest:
+    address: 0.0.0.0:8080
+  #如果不在集群节点上以容器的方式部署运行,则需要将monitor及credentials相关注释全部放开,并配置ak/sk
+  #credentials:
+    #accessKey: ak
+    #secretKey: sk
+    #akskCustomCipher: default
+    #project: cn-north-1
